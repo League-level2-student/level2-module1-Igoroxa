@@ -2,6 +2,7 @@ package _02_array_list_guestbook;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,10 +24,14 @@ public class GuestBook implements ActionListener {
 	JButton button1 = new JButton("Add Names");
 	JButton button2 = new JButton("View Names");
 	
+	ArrayList<String> names = new ArrayList<String>();
+	
 	GuestBook() {
 		frame.add(panel);
 		panel.add(button1);
 		panel.add(button2);
+		frame.setVisible(true);
+		frame.pack();
 		
 		button1.addActionListener(this);
 		button2.addActionListener(this);
@@ -35,11 +40,22 @@ public class GuestBook implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 if (e.getSource() == button1) {
+	
+		
+	
 	String name = JOptionPane.showInputDialog("Enter in a name:");
+	names.add(name);
+
 }
 if (e.getSource() == button2) {
+	String blank = "";
+	for (int j = 0; j < names.size(); j++) {
+		
+	blank += "Guest #" + (j+1) + " " + names.get(j) + "\n";
+	}
+	JOptionPane.showMessageDialog(null, blank);
 	
-}
+	}
 		
 	}
 }
